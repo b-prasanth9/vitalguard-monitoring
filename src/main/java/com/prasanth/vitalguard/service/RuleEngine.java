@@ -1,0 +1,3 @@
+package com.prasanth.vitalguard.service;
+import com.prasanth.vitalguard.model.VitalReading;import org.springframework.stereotype.Component;import java.util.ArrayList;import java.util.List;
+@Component public class RuleEngine{public void evaluate(VitalReading v){List<String> a=new ArrayList<>();if(v.getHeartRate()<50||v.getHeartRate()>120)a.add("Heart rate outside demo range");if(v.getSpo2()<92)a.add("SpO2 below demo threshold");if(v.getTemperature()>38.0)a.add("Temperature above demo threshold");if(v.getSystolic()>140||v.getDiastolic()>90)a.add("Blood pressure above demo threshold");v.setRiskLevel(a.size()>=2?"HIGH":a.size()==1?"MEDIUM":"NORMAL");v.setAlertMessage(a.isEmpty()?"No rule triggered":String.join("; ",a));}}
