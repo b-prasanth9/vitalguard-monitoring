@@ -1,0 +1,1 @@
+package com.prasanth.vitalguard.repository;import com.prasanth.vitalguard.model.VitalReading;import org.springframework.data.jpa.repository.JpaRepository;public interface VitalRepository extends JpaRepository<VitalReading,Long>{}
